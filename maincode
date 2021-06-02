@@ -79,32 +79,8 @@ while(1){
 	
 	
 	}
-	
-	/// Getting the distance from GPS module then parsing it into the 7-segement.
-//  distance = getdistance(lat_1,long_1,lat_2,long_2) ;
-//	total_distance+=distance;
-
-
-// getdistance(30.08936865510356, 31.317882086193052,30.08828020962868, 31.316465879823166);
-
-
-// ### random intialization function for the array coordinates (which we should collect from the GPS module  ###
-
-// double coordinates[10][2] ;
-// coordinates[0][0] = 30.08936865510356 ; 
-// coordinates[0][1] = 31.317882086193052 ; 
-// for(int i= 0; i < 10 ; i++){
-//     coordinates[i+1][0] = coordinates[i][0] +1 ;
-//     coordinates[i+1][1] = coordinates[i][1] +1 ;
-// }
-
-// ### loop to increase the total distance  ###
-// double distance = 0 ;
-// for(int i= 0; i < 9 ; i++){
-//     distance += getdistance(coordinates[i][0],coordinates[i][1],coordinates[i+1][0],coordinates[i+1][1]);
-// }
-// printf("%.10f\n", distance);
-	
+//////////////////////
+///////////////////
 	
 for (i=0;i<=20;i++){
 GPIO_PORTB_DATA_R |= 0x01;
