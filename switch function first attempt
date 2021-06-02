@@ -1,0 +1,82 @@
+#include "tm4c123gh6pm.h"
+#include "stdint.h"
+
+#define GPIO_PORTF_CLK_EN  0x20
+#define GPIO_PORTF_PIN1_EN 0x02
+#define LED_ON1        0x02
+#define GPIO_PORTF_PIN2_EN 0x04
+#define LED_ON2           0x04
+#define GPIO_PORTF_PIN3_EN 0x08
+#define LED_ON3        0x08
+
+#define DELAY_VALUE 1000000
+
+unsigned long j=0;
+void Delay(void){
+    for (j=0; j<DELAY_VALUE ; j++);
+}
+// switch function
+void SW(){
+    //press on SW1 and SW2 to enable "GREEN LED"
+    if ((GPIO_PORTF_DATA_R & 0x10) ==0 && (GPIO_PORTF_DATA_R & 0x01) ==0)
+        {GPIO_PORTF_DATA_R = 0x08;} 
+    // press on SW2 once to enable "RED LED" 
+    else if ((GPIO_PORTF_DATA_R & 0x01) == 0){
+        GPIO_PORTF_DATA_R = 0x02;
+    } 
+    // press on SW1 once to enable "BLUE LED"
+    else if((GPIO_PORTF_DATA_R & 0x10) == 0){
+        GPIO_PORTF_DATA_R = 0x04;
+    }
+    // if Any switch is pressed again, the LED will turn OFF
+    else if((GPIO_PORTF_DATA_R & 0x11)==17){GPIO_PORTF_DATA_R = 0x11;}
+
+}
+
+
+int main ( void )
+{
+int i=0;
+int j1=0;
+volatile unsigned long ulLoop ;
+SYSCTL_RCGCGPIO_R |= (1<<1) ;
+ulLoop = SYSCTL_RCGCGPIO_R;
+
+GPIO_PORTB_DIR_R |= 0x01 ;
+GPIO_PORTB_DEN_R |= 0x01 ;
+GPIO_PORTB_DIR_R |= 0x02 ;
+GPIO_PORTB_DEN_R |= 0x02 ;
+GPIO_PORTB_DIR_R |= 0x03 ;
+GPIO_PORTB_DEN_R |= 0x03 ;
+
+//initializing PORT F 
+SYSCTL_RCGCGPIO_R |=0x20;
+while((SYSCTL_PRGPIO_R & 0x20)==0);
+GPIO_PORTF_DIR_R|=0x0E;
+GPIO_PORTF_DEN_R|=0x1F;
+GPIO_PORTF_PUR_R &= 0x11;
+
+
+// Loop forever . 
+
+
+ while (1) 
+{
+ /GPIO_PORTB_DATA_R = 0x01;
+i++;
+if (i==9)
+{
+        i=0;
+        Delay();
+        GPIO_PORTB_DATA_R = 0x02;
+        j1++;
+if(j1==9)
+{
+        j1=0;
+        GPIO_PORTB_DATA_R = 0x03;
+}
+}/
+    SW();
+
+}
+}
