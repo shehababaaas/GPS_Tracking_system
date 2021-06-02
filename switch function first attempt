@@ -63,7 +63,7 @@ GPIO_PORTF_PUR_R &= 0x11;
 
  while (1) 
 {
- /GPIO_PORTB_DATA_R = 0x01;
+ /*GPIO_PORTB_DATA_R = 0x01;
 i++;
 if (i==9)
 {
@@ -76,7 +76,7 @@ if(j1==9)
         j1=0;
         GPIO_PORTB_DATA_R = 0x03;
 }
-}/
+}*/
     SW();
 
 }
