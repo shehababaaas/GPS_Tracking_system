@@ -42,11 +42,11 @@ void init (void)
   GPIO_PORTB_AMSEL_R=0x00;
   GPIO_PORTA_PCTL_R=0x00;
   GPIO_PORTB_PCTL_R=0x00;
-  LCD_command(0x30);
-  LCD_command(0x38);
-  LCD_command(0x06);
-  LCD_command(0x01);
-  LCD_command(0x0F);
+  LCD_command(0x30);         //wake up
+  LCD_command(0x38);         //8 bits for display
+  LCD_command(0x06);         //shift
+  LCD_command(0x01);         //clear
+  LCD_command(0x0F);         //display on
   }
 
 int main(){
