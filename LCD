@@ -1,1 +1,31 @@
+#include "tm4c123gh6pm.h"
+#define DELAY_VALUE 10000     //delay function    
+void delay(){
+    int j =0;
+for (j=0 ; j<DELAY_VALUE ; j++){
+
+}}
+   
+
+//LCD DATA
+void LCD_DATA(char data)
+{
+	GPIO_PORTA_DATA_R=0x20;
+	GPIO_PORTB_DATA_R=data;
+	GPIO_PORTA_DATA_R|=0x80;
+	delay();
+	GPIO_PORTA_DATA_R=0;
+	
+}
+//LCD COMMAND
+void LCD_command(char command)
+{
+	GPIO_PORTA_DATA_R=0;
+	GPIO_PORTB_DATA_R=command;
+	GPIO_PORTA_DATA_R|=0x80;
+	delay();
+	
+	GPIO_PORTA_DATA_R=0;
+	
+}
 
