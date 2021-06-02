@@ -118,3 +118,9 @@ void UART1_Init(void){
   GPIO_PORTB_AMSEL_R &= ~0x03;            
   GPIO_PORTB_PCTL_R = (GPIO_PORTB_PCTL_R&0xFFFFFF00)|(GPIO_PCTL_PB1_U1TX|GPIO_PCTL_PB0_U1RX);
 }
+// ### loop to increase the total distance  ###
+// double distance = 0 ;
+// for(int i= 0; i < 9 ; i++){
+//     distance += getdistance(coordinates[i][0],coordinates[i][1],coordinates[i+1][0],coordinates[i+1][1]);
+// }
+// printf("%.10f\n", distance);
