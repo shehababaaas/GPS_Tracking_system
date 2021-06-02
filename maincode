@@ -7,7 +7,15 @@
 #endif
 #define DELAY_VALUE 1000000
 // intialization for LEDs.
-
+unsigned long j=0;
+    // Delay function
+void Delay(void){
+    for (j=0; j<DELAY_VALUE ; j++);
+}
+// An indicator function which switch is on or off.
+unsigned char SW1_SW2_input(void){
+    return GPIO_PORTF_DATA_R & 0x11;
+    }
 
 // initialization for switches.
 void init_SW1_SW2( void){
