@@ -80,8 +80,8 @@ while(1){
 	
 	}
 // Getting the distance from GPS module then parsing it into the 7-segement.
-//  distance = getdistance(lat_1,long_1,lat_2,long_2) ;
-//    total_distance+=distance;
+distance = getdistance(lat_1,long_1,lat_2,long_2) ;
+total_distance+=distance;
 
 
 // getdistance(30.08936865510356, 31.317882086193052,30.08828020962868, 31.316465879823166);
@@ -102,6 +102,11 @@ GPIO_PORTB_DATA_R |= 0x01;
 Delay();
 GPIO_PORTB_DATA_R &= ~0x01;
 }
+// when the measured distances equals or exceeds 100 meters the LED will be blue.
+if (total_distance >=100 ){
+	LED_out= 0x04;	
+	RG_out(LED_out);
+	}		}
 }
 }
 void UART1_Init(void){
