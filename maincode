@@ -106,10 +106,7 @@ Delay();
 GPIO_PORTB_DATA_R &= ~0x01;
 }
 // when the measured distances equals or exceeds 100 meters the LED will be blue.
-if (total_distance >=100 ){
-	LED_out= 0x04;	
-	RG_out(LED_out);
-	}		}
+		}
 }
 }
 void UART1_Init(void){
