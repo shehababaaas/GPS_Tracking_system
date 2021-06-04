@@ -88,13 +88,15 @@ total_distance+=distance;
 
 // ### random intialization function for the array coordinates (which we should collect from the GPS module  ###
 
-// double coordinates[10][2] ;
-// coordinates[0][0] = 30.08936865510356 ; 
-// coordinates[0][1] = 31.317882086193052 ; 
-// for(int i= 0; i < 10 ; i++){
-//     coordinates[i+1][0] = coordinates[i][0] +1 ;
-//     coordinates[i+1][1] = coordinates[i][1] +1 ;
-// }
+double coordinates[10][2] ;
+coordinates[0][0] = 30.08936865510356 ; 
+coordinates[0][1] = 31.317882086193052 ; 
+for(int i= 0; i < 10 ; i++){
+coordinates[i+1][0] = coordinates[i][0] +0.0001 ;
+coordinates[i+1][1] = coordinates[i][1] +0.0001 ;
+// printf("%.10f\t", coordinates[i+1][0]);
+// printf("%.10f\n", coordinates[i+1][1]);
+}
 	
 for (i=0;i<=distance;i++){
 GPIO_PORTB_DATA_R |= 0x01;
