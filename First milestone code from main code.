@@ -1,3 +1,42 @@
+#include "tm4c123gh6pm.h"
+#include <stdio.h>
+#include "stdint.h"
+#include <math.h>
+
+#ifndef M_PI
+#define M_PI 3.141592
+#endif
+#define DELAY_VALUE 100000
+#define DELAY_VALUE_1 10000
+
+void LCD_DATA(char data)
+{
+    GPIO_PORTA_DATA_R=0x20;
+    GPIO_PORTB_DATA_R=data;
+    GPIO_PORTA_DATA_R|=0x80;
+    Delay_1();
+    GPIO_PORTA_DATA_R=0;
+
+}
+//LCD COMMAND
+void LCD_command(char command)
+{
+    GPIO_PORTA_DATA_R=0;
+    GPIO_PORTB_DATA_R=command;
+    GPIO_PORTA_DATA_R|=0x80;
+    Delay_1();
+
+    GPIO_PORTA_DATA_R=0;
+
+} 
+
+
+
+
+
+
+
+
 // intialization for LEDs.
 void init_LEDs(void){
 	//SYSCTL_RCGCGPIO_R |=0x20;
