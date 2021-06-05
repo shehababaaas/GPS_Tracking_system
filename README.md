@@ -1,4 +1,4 @@
-# Embedded_project
+# Embedded_project (Group 52)
 ## In this repository The whole team effort for Embedded project spring 2021
 
 
