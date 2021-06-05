@@ -61,13 +61,6 @@ distance = R * c* 1000 ;
 return distance;
 } 
 
-
-
-
-
-
-
-
 // An indicator function which switch is on or off.
 unsigned char SW1_SW2_input(void){
 	return GPIO_PORTF_DATA_R & 0x11;
