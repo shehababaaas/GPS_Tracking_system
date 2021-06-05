@@ -45,6 +45,10 @@ unsigned char SW1_SW2_input(void){
 	return GPIO_PORTF_DATA_R & 0x11;
 	}
 
+// function to get the LED on.
+void RG_out(unsigned char data){
+    GPIO_PORTF_DATA_R &=~ 0x0E;
+    GPIO_PORTF_DATA_R|=data;
 
 
 // intialization for LEDs.
@@ -74,8 +78,17 @@ void init_SW1_SW2( void){
     GPIO_PORTF_DIR_R &= ~0x11;
     GPIO_PORTF_DEN_R|=0x11;
     GPIO_PORTF_PUR_R |= 0x11;}
-    
   
+  //Port A initialization
+   void Port_A_init(void){
+SYSCTL_RCGCGPIO_R |= (0x01) ;
+while((SYSCTL_PRGPIO_R & 0x01)==0)
+GPIO_PORTA_AMSEL_R &= ~ 0x04;
+GPIO_PORTA_PCTL_R &= ~0x00000F00;
+GPIO_PORTA_AFSEL_R &=~0x04;
+GPIO_PORTA_DIR_R |= 0x04 ;
+GPIO_PORTA_DEN_R |= 0x04 ;
+}  
   int main ( void )
 {
 while(1){
@@ -83,6 +96,10 @@ init();
 init_SW1_SW2();
 init_LEDs();
 Port_A_init();
+
+// Getting the distance from GPS module then parsing it into the 7-segement.
+double distance = getdistance(30.08936865510356, 31.317882086193052,30.08936020962868, 31.317865879823166);
+total_distance+=(distance);
 
 LCD_command(1);
 LCD_command(0x80);
