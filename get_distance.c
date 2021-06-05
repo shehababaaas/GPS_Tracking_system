@@ -4,7 +4,7 @@
 #define M_PI 3.141592
 #endif
 
-// ### funtion to calculate Haversine formula for distance between two points  ###
+// ### function to calculate Haversine formula for distance between two points  ###
 double getdistance(double lat_1,double long_1,double lat_2,double long_2)
 {
 double R = 6373.0 ;
