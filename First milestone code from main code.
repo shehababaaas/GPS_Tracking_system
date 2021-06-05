@@ -6,8 +6,8 @@
 #ifndef M_PI
 #define M_PI 3.141592
 #endif
-#define DELAY_VALUE 100000
-#define DELAY_VALUE_1 10000
+#define DELAY_VALUE 10000
+#define DELAY_VALUE_1 100000
 
 unsigned long j=0;
     // Delay function
@@ -39,7 +39,27 @@ void LCD_command(char command)
 
 }
 
-
+//initialization function
+void init (void)
+{ 
+  SYSCTL_RCGCGPIO_R|=0X03;
+  GPIO_PORTB_DIR_R=0xFF;
+  GPIO_PORTB_DEN_R=0xFF;
+  GPIO_PORTA_DIR_R=0xE0;
+  GPIO_PORTA_DEN_R=0xE0;
+  GPIO_PORTA_AFSEL_R=0x00;
+  GPIO_PORTB_AFSEL_R=0x00;
+  GPIO_PORTA_AMSEL_R=0x00;
+  GPIO_PORTB_AMSEL_R=0x00;
+  GPIO_PORTA_PCTL_R=0x00;
+  GPIO_PORTB_PCTL_R=0x00;
+  LCD_command(0x30);	      //wake up
+	
+  LCD_command(0x38);         //8 bits for display
+  LCD_command(0x06);         //shift
+  LCD_command(0x01);         //clear
+  LCD_command(0x0F);         //display on
+  }
 
 // function to get distance from GPS module 
 
@@ -164,19 +184,22 @@ LCD_DATA(text_1[1]);
 LCD_DATA(text_1[2]);
 LCD_DATA(text_1[3]);
 
-// It will 20 times on seven segment as an assumed distance from virtual GPS module just for first milestone.
 
 
-	for (i=0;i<(distance);i++){
-  GPIO_PORTA_DATA_R |= 0x04;
+
+//if it reached 100 meters the LED will be blue.
+  
+  		if (total_distance >=100 ){
+	LED_out= 0x04;	
+	RG_out(LED_out);
+	// Segement will glow.
+	while(i<total_distance){
+	i++;	
+  	GPIO_PORTA_DATA_R |= 0x04;
 	Delay();
 	GPIO_PORTA_DATA_R &= ~0x04;
 			}
-//if it reached 100 meters the LED will be blue.
-  
-		if (total_distance >=100 ){
-	LED_out= 0x04;	
-	RG_out(LED_out);
+	// to make it stop		
 	while(1){
 	}
 	}
