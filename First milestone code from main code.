@@ -154,8 +154,18 @@ LCD_DATA(text[0]);
 LCD_DATA(text[1]);
 LCD_DATA(text[2]);
 LCD_DATA(text[3]);
+LCD_command(0xC0);
+LCD_DATA('t');
+LCD_DATA('o');
+LCD_DATA('t');
+LCD_DATA('=');
+LCD_DATA(text_1[0]);
+LCD_DATA(text_1[1]);
+LCD_DATA(text_1[2]);
+LCD_DATA(text_1[3]);
 
 // It will 20 times on seven segment as an assumed distance from virtual GPS module just for first milestone.
+
 
 	for (i=0;i<(distance);i++){
   GPIO_PORTA_DATA_R |= 0x04;
