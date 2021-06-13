@@ -79,27 +79,3 @@ void UART0_Init(void)
     GPIO_PORTA_DEN_R |= 0x03;
     GPIO_PORTA_AMSEL_R &= ~0x03;
 }
-void UART0_Write(unsigned char data)
-{
-    while ((UART0_FR_R & UART_FR_TXFF) != 0)
-        ;
-    UART0_DR_R = data;
-}
-unsigned char UART0_ReadChar(void)
-{ //Read Char
-    while ((UART0_FR_R & RXEMPTY) != 0)
-    {
-    }
-    return UART0_DR_R & 0xFF;
-}
-void UART0_ReadString(char *str, char stopCh)
-{ //Read String
-    char c = UART0_ReadChar();
-    while (c && c != stopCh)
-    {
-        *str = c;
-        str++;
-        c = UART0_ReadChar();
-    }
-    *str = 0x00;
-}
