@@ -1,1 +1,10 @@
+#include "tm4c123gh6pm.h"
+#include <stdio.h>
+#include "stdint.h"
+#include <math.h>
 
+#ifndef M_PI
+#define M_PI 3.141592
+#endif
+#define DELAY_VALUE 10000
+#define DELAY_VALUE_1 100000
