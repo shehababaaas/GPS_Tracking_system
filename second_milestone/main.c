@@ -155,3 +155,26 @@ int main(void)
         total_distance += (distance);
         z++;
 
+// printing on the LCD
+        sprintf(text, "%lf", distance);
+        sprintf(text_1, "%lf", total_distance);
+        LCD_command(1);
+        LCD_command(0x80);
+        LCD_DATA('d');
+        LCD_DATA('i');
+        LCD_DATA('s');
+        LCD_DATA('t');
+        LCD_DATA('=');
+        LCD_DATA(text[0]);
+        LCD_DATA(text[1]);
+        LCD_DATA(text[2]);
+        LCD_DATA(text[3]);
+        LCD_command(0xC0);
+        LCD_DATA('t');
+        LCD_DATA('o');
+        LCD_DATA('t');
+        LCD_DATA('=');
+        LCD_DATA(text_1[0]);
+        LCD_DATA(text_1[1]);
+        LCD_DATA(text_1[2]);
+        LCD_DATA(text_1[3]);
