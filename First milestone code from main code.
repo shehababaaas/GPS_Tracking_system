@@ -158,7 +158,8 @@ Port_A_init();
 // Getting the distance from GPS module then parsing it into the 7-segement.
 double distance = getdistance(30.08936865510356, 31.317882086193052,30.08936020962868, 31.317865879823166);
 total_distance+=(distance);
-
+sprintf(text,"%lf",distance);
+sprintf(text_1,"%lf",total_distance);	
 LCD_command(1);
 LCD_command(0x80);
 LCD_DATA('d');
