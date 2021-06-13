@@ -202,4 +202,14 @@ int main(void)
                 Delay();
                 GPIO_PORTA_DATA_R &= ~0x04;
             }
-         
+         // to make it stop
+            while (1)
+            {
+            }
+        }
+
+        memset(command, 0, len);
+        free(comma);
+    }
+}
+
