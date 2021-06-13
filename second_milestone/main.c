@@ -33,7 +33,7 @@ double lat_long[100][2];
 char d_lat[10];
 char d_lon[10];
 char m_lat[10];
-
+char m_lon[10];
 int main(void)
 {
 
@@ -115,4 +115,4 @@ int main(void)
             token_1 = strtok(NULL, s);
         }
 
-char m_lon[10];
+
