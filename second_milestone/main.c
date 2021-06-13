@@ -116,3 +116,42 @@ int main(void)
         }
 
 
+        // extracting the latitude and longitude
+        strncpy(d_lat, lat, 2);
+        strncpy(d_lon, lon, 3);
+        j = 0;
+        for (i = 2; i < (strlen(lat) + 1); i++)
+        {
+            m_lat[j] = lat[i];
+            j++;
+        }
+        j = 0;
+        for (i = 3; i < (strlen(lon) + 1); i++)
+        {
+            m_lon[j] = lat[i];
+            j++;
+        }
+
+        //lat_gps = atof(lat)/100;
+        //lon_gps = atof(lon)/100;
+        lat_gps = atof(d_lat) + atof(m_lat) / 60;
+        lon_gps = atof(d_lon) + atof(m_lon) / 60;
+
+        // calculating the distance (and storing it in an array) and total distance
+        if (lat_gps == 0 || lon_gps == 0)
+        {
+            continue;
+        }
+        lat_long[z][0] = lat_gps;
+        lat_long[z][1] = lon_gps;
+        if (z == 1)
+        {
+            distance = 0;
+        }
+        else
+        {
+            distance = getdistance(lat_long[z - 1][0], lat_long[z - 1][1], lat_long[z][0], lat_long[z][1]);
+        }
+        total_distance += (distance);
+        z++;
+
