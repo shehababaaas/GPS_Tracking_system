@@ -33,7 +33,24 @@ double lat_long[100][2];
 char d_lat[10];
 char d_lon[10];
 char m_lat[10];
-UART0_Init();
+
+int main(void)
+{
+
+    int i = 0;
+    int z = 1;
+    const int len = 100;
+    char command[len] = {0};
+    const char s[2] = "$";
+    char *token_1;
+    char *comma = 0;
+    char *ret;
+    char *ret_E;
+    int start_point;
+    int size = 0;
+    lat_long[0][0] = 0.0;
+    lat_long[0][1] = 0.0;
+    UART0_Init();
     UART1_Init();
     SysTick_Init();
     init();
@@ -99,20 +116,3 @@ UART0_Init();
         }
 
 char m_lon[10];
-
-int main(void)
-{
-
-    int i = 0;
-    int z = 1;
-    const int len = 100;
-    char command[len] = {0};
-    const char s[2] = "$";
-    char *token_1;
-    char *comma = 0;
-    char *ret;
-    char *ret_E;
-    int start_point;
-    int size = 0;
-    lat_long[0][0] = 0.0;
-    lat_long[0][1] = 0.0;
