@@ -8,3 +8,25 @@
 #endif
 #define DELAY_VALUE 10000
 #define DELAY_VALUE_1 100000
+
+
+void LCD_DATA(char data)
+{
+    GPIO_PORTA_DATA_R=0x20;
+    GPIO_PORTB_DATA_R=data;
+    GPIO_PORTA_DATA_R|=0x80;
+    Delay_1();
+    GPIO_PORTA_DATA_R=0;
+
+}
+//LCD COMMAND
+void LCD_command(char command)
+{
+    GPIO_PORTA_DATA_R=0;
+    GPIO_PORTB_DATA_R=command;
+    GPIO_PORTA_DATA_R|=0x80;
+    Delay_1();
+
+    GPIO_PORTA_DATA_R=0;
+
+}
