@@ -178,3 +178,17 @@ int main(void)
         LCD_DATA(text_1[1]);
         LCD_DATA(text_1[2]);
         LCD_DATA(text_1[3]);
+
+        if (total_distance >= 100)
+        {
+            LED_out = 0x04;
+            RG_out(LED_out);
+            // Segement will glow.
+            while (i < total_distance)
+            {
+                i++;
+                GPIO_PORTA_DATA_R |= 0x04;
+                Delay();
+                GPIO_PORTA_DATA_R &= ~0x04;
+            }
+         
