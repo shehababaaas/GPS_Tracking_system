@@ -33,6 +33,71 @@ double lat_long[100][2];
 char d_lat[10];
 char d_lon[10];
 char m_lat[10];
+UART0_Init();
+    UART1_Init();
+    SysTick_Init();
+    init();
+    init_SW1_SW2();
+    init_LEDs();
+    Port_A_init();
+
+    // Loop forever
+    while (1)
+    {
+        get_Command(command, len);
+        /* get the first token /
+        token_1 = strtok(command, s);
+
+        / walk through other tokens */
+        while (token_1 != NULL)
+        {
+            for (i = 0; i < 5; i++)
+            {
+                a[i] = token_1[i];
+            }
+            if (strcmp(a, "GPGLL") == 0)
+            {
+                comma = malloc(strlen(token_1) + 1);
+                strcpy(comma, token_1);
+                ret = strchr(comma, 'N');
+                ret_E = strchr(comma, 'E');
+                size = (strlen(ret) - strlen(ret_E)) - 3;
+                start_point = (strlen(token_1) - strlen(ret)) + 2;
+                for (i = start_point; i < start_point + (size); i++)
+                {
+                    lon[i - start_point] = token_1[i];
+                }
+                size = ((strlen(token_1) - strlen(ret) - 6) - 1) + 5;
+                for (i = 6; i <= (size); i++)
+                {
+                    lat[i - 6] = token_1[i];
+                }
+            }
+
+            else if (strcmp(a, "GPRMC") == 0)
+            {
+
+                comma = malloc(strlen(token_1) + 1);
+                strcpy(comma, token_1);
+                ret = strchr(comma, 'N');
+                ret_E = strchr(comma, 'E');
+
+                size = (strlen(ret) - strlen(ret_E)) - 3;
+                start_point = (strlen(token_1) - strlen(ret)) + 2;
+                for (i = start_point; i < start_point + (size); i++)
+                {
+                    lon[i - start_point] = token_1[i];
+                }
+                size = (strlen(token_1) - strlen(ret)) - 19;
+                for (i = 18; i < 18 + (size); i++)
+                {
+                    lat[i - 18] = token_1[i];
+                }
+            }
+
+            token_1 = strtok(NULL, s);
+        }
+
 char m_lon[10];
 
 int main(void)
