@@ -33,17 +33,6 @@ double lat_long[100][2];
 char d_lat[10];
 char d_lon[10];
 char m_lat[10];
-// to make it stop
-            while (1)
-            {
-            }
-        }
-
-        memset(command, 0, len);
-        free(comma);
-    }
-}
-
 char m_lon[10];
 int main(void)
 {
