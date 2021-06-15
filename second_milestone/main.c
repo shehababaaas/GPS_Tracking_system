@@ -162,6 +162,8 @@ int main(void)
         else
         {
             distance = getdistance(lat_long[z - 1][0], lat_long[z - 1][1], lat_long[z][0], lat_long[z][1]);
+             		 if (distance >=0.2){
+				distance=abs(distance-0.5);
         }
         total_distance += (distance);
         z++;
