@@ -1,4 +1,4 @@
-# Embedded_projec
+# Embedded_project
 ## In this repository The whole team effort for Embedded project 
 
 ## Second milestone has the whole project.
