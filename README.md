@@ -1,7 +1,7 @@
 # Embedded_project
 ## In this repository The whole team effort for Embedded project 
 
-## Second milestone has the whole project.
+## second_milestone contains the whole project.
 "First milestone code from main code"  >>>> final code for first milestone submission
 
 "maincode"   >>>> the overall main code
